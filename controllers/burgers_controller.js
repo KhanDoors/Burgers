@@ -1,35 +1,45 @@
+// require in express, and set up routing for it, and bring in
+// the burger.js model file
 var express = require('express');
 var router = express.Router();
-var burgers = require('../models/burger.js');
+var burger = require('../models/burger.js');
 
-router.get('/', function(req, res){
-	res.redirect('/burgers')
+// add a '/' endpoint that redirects to the /index route
+router.get('/', function(req, res) {
+	res.redirect('/index');
 });
 
-router.get('/burgers', function(req, res){
-	burgers.all(function(data){
+// add a '/index/' endpoint that gets all the burgers
+// then renders the index file by passing in all the burgers
+// as an object for handlebars to use
+router.get('/index', function(req, res) {
+	burger.selectAll(function(data) {
 		var hbsObject = {burgers: data};
-
 		console.log(hbsObject);
-
 		res.render('index', hbsObject);
 	});
 });
 
-router.post('/burgers/create', function(req, res){
-	burgers.create(['burger_name'], [req.body.b_name], function(data){
-		res.redirect('/burgers')
+// add a '/burgers/insertOne' endpoint that posts the 
+// burger name the user entered then as a callback it
+// redirects back to the /index route
+router.post('/burgers/insertOne', function(req, res) {
+	burger.insertOne(['burger_name', 'devoured'], [req.body.name, false], function() {
+		res.redirect('/index');
 	});
 });
 
-router.put('/burgers/update/:id', function(req, res){
+// add a '/burgers/updateOne/:id' route that updates
+// the status of the burger from being uneaten to eaten
+// then does a callback that redirects to the /index endpoint
+router.put('/burgers/updateOne/:id', function(req, res) {
 	var condition = 'id = ' + req.params.id;
+	console.log('condition', condition);
 
-	console.log('condition ', condition);
-
-	burgers.update({'devoured': req.body.devoured}, condition, function(data){
-		res.redirect('/burgers');
+	burger.updateOne({devoured: req.body.devoured}, condition, function() {
+		res.redirect('/index');
 	});
 });
 
+// export the router (controller) back to the server
 module.exports = router;
