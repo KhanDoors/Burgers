@@ -1,5 +1,8 @@
 # Burgers
 
+Heroku link:
+
+https://tranquil-shore-33769.herokuapp.com/index
 
 file structure follwed in order to conform the MVC design pattern.
 
@@ -36,5 +39,5 @@ file structure follwed in order to conform the MVC design pattern.
     └── layouts
         └── main.handlebars
 
-This was created with  MySQL, Node, Express, Handlebars and a homemade ORM.
+This was created with  MySQL, Node, Express, Handlebars, a homemade ORM and some Jazz.
 
