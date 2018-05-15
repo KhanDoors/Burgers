@@ -3,8 +3,8 @@ var mysql = require('mysql');
 var connection;
 
 // add in the environment variable option for JAWSDB for heroku
-if (process.env.JAWSDB_URL) {
-	connection = mysql.createConnection(process.env.JAWSDB_URL);
+if (process.env.JAWSDB_GRAY_URL) {
+	connection = mysql.createConnection(process.env.JAWSDB_GRAY_URL);
 } else {
 	connection = mysql.createConnection({
         host: 'localhost',
