@@ -10,20 +10,26 @@ file structure follwed in order to conform the MVC design pattern.
 │   ├── connection.js
 │   └── orm.js
 │ 
+
 ├── controllers
 │   └── burgers_controller.js
 │
+
 ├── db
 │   ├── schema.sql
 │   └── seeds.sql
 │
+
 ├── models
 │   └── burger.js
 │ 
+
 ├── node_modules
 │ 
+
 ├── package.json
 │
+
 ├── public
 │   ├── assets
 │   │   ├── css
@@ -34,6 +40,7 @@ file structure follwed in order to conform the MVC design pattern.
 │
 ├── server.js
 │
+
 └── views
     ├── index.handlebars
     └── layouts
